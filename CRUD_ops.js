@@ -28,4 +28,4 @@ const menuItemRoutes = require('./routes/menuRoutes');
 app.use('/menu', menuItemRoutes);
 
 
-app.listen(PORT, ()=> { console.log("Databas server is live On: ")} ); 
+app.listen(PORT, ()=> { console.log("Database server is live :- ")} ); 
