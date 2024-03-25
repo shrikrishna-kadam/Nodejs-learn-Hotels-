@@ -1,7 +1,11 @@
 
 const mongoose = require('mongoose');
+
+require('dotenv').config();
 // define mongodb connection to database
-const mongoURL = 'mongodb://localhost:27017/hotels'; // 'hotels' is our database name to create
+// const mongoURL = process.env.DB_url_Local; // 'hotels' is our database name to create
+const mongoURL = process.env.DB_url ;
+
 
 // set up mongodb connection
 mongoose.connect(mongoURL)
@@ -9,7 +13,11 @@ mongoose.connect(mongoURL)
 const db = mongoose.connection;
 
 db.on('connected', () => {
-    console.log("Connected to MongoDB server !!!");
+    if (mongoURL== process.env.DB_url_Local) {
+        console.log(" :: Local MongoDB server !!!");
+    } else {
+        console.log(" :: MongoDB Atlas server !!!");
+    }
 })
 
 db.on('error', (err) => {
